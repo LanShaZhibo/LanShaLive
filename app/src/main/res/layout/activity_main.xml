@@ -1,16 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.lansha.lanshalive.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <LinearLayout
+        android:background="#3BA2EF"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_controller_height">
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/main_controller_height">
+    </FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/main_controller"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_controller_height"
+        android:background="#ffffff"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/main_homepage"
+            android:drawableTop="@drawable/homepage_tab"
+            style="@style/controller_button_style"
+            android:text="首页"
+            android:button="@null"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/main_game"
+            android:drawableTop="@drawable/game_tab"
+            style="@style/controller_button_style"
+            android:layout_marginRight="@dimen/main_controller_two_right_margin"
+            android:button="@null"
+            android:text="游戏"/>
+
+        <RadioButton
+            android:id="@+id/main_live"
+            android:drawableTop="@drawable/live_tab"
+            style="@style/controller_button_style"
+            android:layout_marginLeft="@dimen/main_controller_three_left_margin"
+            android:button="@null"
+            android:text="直播"/>
+
+        <RadioButton
+            android:id="@+id/main_mine"
+            android:drawableTop="@drawable/mine_tab"
+            style="@style/controller_button_style"
+            android:button="@null"
+            android:text="我的"/>
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/teach_play"
+        android:layout_width="@dimen/main_controller_play_width"
+        android:layout_height="@dimen/main_controller_play_height"
+        android:layout_gravity="bottom|center_horizontal"
+        android:src="@mipmap/home_tab_live"/>
+
+
+</FrameLayout>
