@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.TabLayout
-        android:layout_marginTop="50dp"
         android:id="@+id/homepage_tabLayout"
         android:layout_width="match_parent"
         app:tabMode="scrollable"
