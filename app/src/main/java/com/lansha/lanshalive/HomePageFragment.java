@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.lansha.lanshalive.HomePage.HomePageChildFragment;
 import com.lansha.lanshalive.HomePage.Recommend;
-import com.lansha.lanshalive.MyUrl.HttpUrl;
+import com.lansha.lanshalive.MyUrl.RecommendUrl;
 import com.lansha.lanshalive.adapter.HomePagerViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -72,13 +72,13 @@ public class HomePageFragment  extends BaseFragment {
 
     public List<Fragment> getData() {
         data.add(new Recommend());
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_QUANBU_URL));
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_WANGZHE_URL));
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_CF_URL));
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_JIELAN_URL));
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_KUPAO_URL));
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_QIUQIU_URL));
-        data.add(new HomePageChildFragment(HttpUrl.RECOMMEND_QITA_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_QUANBU_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_WANGZHE_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_CF_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_JIELAN_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_KUPAO_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_QIUQIU_URL));
+        data.add(new HomePageChildFragment(RecommendUrl.RECOMMEND_QITA_URL));
         return data;
     }
 }

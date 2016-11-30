@@ -21,7 +21,7 @@ import com.lansha.lanshalive.MainActivity;
 import com.lansha.lanshalive.Model.ListViewModel;
 import com.lansha.lanshalive.Model.RecommendHeader;
 import com.lansha.lanshalive.Model.RecyclerModel;
-import com.lansha.lanshalive.MyUrl.HttpUrl;
+import com.lansha.lanshalive.MyUrl.RecommendUrl;
 import com.lansha.lanshalive.R;
 import com.lansha.lanshalive.adapter.RecommendAdapter;
 import com.lansha.lanshalive.adapter.RecommendHeaderAdapter;
@@ -99,7 +99,7 @@ public class Recommend extends Fragment {
     }
 
     private void getrecyclerView() {
-        RequestParams params = new RequestParams(HttpUrl.RECOMMEND_URL);
+        RequestParams params = new RequestParams(RecommendUrl.RECOMMEND_URL);
         x.http().get(params, new Callback.CommonCallback<String >() {
             @Override
             public void onSuccess(String result) {
@@ -136,7 +136,7 @@ public class Recommend extends Fragment {
     }
 
     private void getVpView() {
-        RequestParams params = new RequestParams(HttpUrl.RECOMMEND_URL);
+        RequestParams params = new RequestParams(RecommendUrl.RECOMMEND_URL);
         x.http().get(params, new Callback.CommonCallback<String >() {
             @Override
             public void onSuccess(String result) {
@@ -181,7 +181,7 @@ public class Recommend extends Fragment {
     }
 
     private void setupView() {
-        RequestParams params = new RequestParams(HttpUrl.RECOMMEND_URL);
+        RequestParams params = new RequestParams(RecommendUrl.RECOMMEND_URL);
         x.http().get(params, new Callback.CommonCallback<String >() {
             @Override
             public void onSuccess(String result) {
