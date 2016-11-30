@@ -4,6 +4,7 @@ package com.lansha.lanshalive.MyUrl;
  * Created by my on 2016/11/28.
  */
 public class HttpUrl {
+
     public static final String RECOMMEND_URL= "http://androidapi.lansha.tv/mobile/index/indexV2.html?appType=0&appver=1.36&deviceId=e811d0a7d1a1aab706251895ea003dc2&lanshaSign=9f36c18b9a6e35e911efd2379589b5bf&ostype=1&requestId=257bb835-e70c-4a7b-8b2d-f7257ddb1eaf&timestamp=1479089482";
     public static final String RECOMMEND_QUANBU_URL= "http://androidapi.lansha.tv/mobile/game/data.html?appType=0&appver=1.36&banner=1&gameId=&lanshaSign=83d6463fcd335571f479c74cc9aba7eb&ostype=1&pageIndex=1&requestId=bf572ba6-9c2b-4b13-890c-b81934f47ff4&timestamp=1479091455";
     public static final String RECOMMEND_WANGZHE_URL= "http://androidapi.lansha.tv/mobile/game/data.htmlhttp://androidapi.lansha.tv/mobile/game/data.html?appType=0&appver=1.36&banner=1&gameId=E5B47F99BE684436A147805230C6568A&lanshaSign=a1c7e63e9f00c63153e203d8f6a414c1&ostype=1&pageIndex=1&requestId=832964ef-a2b6-4c09-be3a-8a81f390a434&timestamp=1479093709";

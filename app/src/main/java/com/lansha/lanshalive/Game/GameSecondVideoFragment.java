@@ -1,16 +1,19 @@
 package com.lansha.lanshalive.Game;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.lansha.lanshalive.BaseFragment;
 import com.lansha.lanshalive.Model.GameSeconVideo.VideoData;
 import com.lansha.lanshalive.R;
+import com.lansha.lanshalive.VideoActivity;
 import com.lansha.lanshalive.adapter.GameSecondVideoAdapter;
 
 import org.json.JSONException;
@@ -22,7 +25,7 @@ import org.xutils.x;
 /**
  * Created by Wind on 2016/11/30 0030.
  */
-public class GameSecondVideoFragment extends BaseFragment {
+public class GameSecondVideoFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     public static final String TAG = GameSecondVideoFragment.class.getSimpleName();
     private ListView mListView;
@@ -36,7 +39,7 @@ public class GameSecondVideoFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        layout = inflater.inflate(R.layout.game_second_video_fragment,container,false);
+        layout = inflater.inflate(R.layout.game_second_video_fragment, container, false);
         return layout;
     }
 
@@ -59,7 +62,7 @@ public class GameSecondVideoFragment extends BaseFragment {
 
                     JSONObject data = JsonObject.getJSONObject("data");
 
-                    VideoData videoData  = gson.fromJson(data.toString(), VideoData.class);
+                    VideoData videoData = gson.fromJson(data.toString(), VideoData.class);
 
                     adapter.updataRes(videoData.getList());
 
@@ -87,7 +90,18 @@ public class GameSecondVideoFragment extends BaseFragment {
 
     private void initView() {
         mListView = (ListView) layout.findViewById(R.id.game_second_video_vp_lv);
-        adapter = new GameSecondVideoAdapter(getActivity(),null);
+        adapter = new GameSecondVideoAdapter(getActivity(), null);
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String vidoeAddress = adapter.getItem(position).getVideoAddress();
+        Intent intent = new Intent(getActivity().getApplicationContext(), VideoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("vidoeAddress", vidoeAddress);
+        intent.putExtras(bundle);
+        getActivity().startActivity(intent);
     }
 }
