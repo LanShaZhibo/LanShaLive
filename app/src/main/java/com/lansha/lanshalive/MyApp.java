@@ -4,9 +4,6 @@ import android.app.Application;
 
 import org.xutils.x;
 
-/**
- * Created by my on 2016/11/28.
- */
 public class MyApp extends Application {
     @Override
     public void onCreate() {

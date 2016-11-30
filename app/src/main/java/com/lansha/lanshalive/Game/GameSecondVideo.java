@@ -1,4 +1,4 @@
-package com.lansha.lanshalive;
+package com.lansha.lanshalive.Game;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,19 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lansha.lanshalive.Live.LiveChildFragment;
-import com.lansha.lanshalive.MyUrl.LiveUrl;
+import com.lansha.lanshalive.BaseFragment;
+import com.lansha.lanshalive.MyUrl.GameUrl;
+import com.lansha.lanshalive.R;
 import com.lansha.lanshalive.adapter.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Wind on 2016/11/28 0028.
+ * Created by Wind on 2016/11/30 0030.
  */
-public class LiveFragment  extends BaseFragment {
-
-    public static final String TAG = LiveFragment.class.getSimpleName();
+public class GameSecondVideo extends BaseFragment {
+    public static final String TAG = GameSecondVideo.class.getSimpleName();
     private ViewPagerAdapter adpter;
     private TabLayout mTabLayout;
     private ViewPager mViewPage;
@@ -29,7 +29,7 @@ public class LiveFragment  extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        layout = inflater.inflate(R.layout.live_fragment,container,false);
+        layout = inflater.inflate(R.layout.game_second_video,container,false);
         return layout;
     }
 
@@ -40,29 +40,30 @@ public class LiveFragment  extends BaseFragment {
     }
 
     private void initView() {
-        mViewPage = (ViewPager) layout.findViewById(R.id.live_viewpager);
+        mViewPage = (ViewPager) layout.findViewById(R.id.game_second_video_vp);
 
         adpter = new ViewPagerAdapter(getChildFragmentManager(),getData(),getTitles());
         mViewPage.setAdapter(adpter);
 
-        mTabLayout = (TabLayout) layout.findViewById(R.id.live_tablayout);
+        mTabLayout = (TabLayout) layout.findViewById(R.id.game_second_video_tab);
         mTabLayout.setupWithViewPager(mViewPage);
     }
 
     public List<Fragment> getData() {
         List<Fragment> data = new ArrayList<>();
         // 填充数据
-        data.add(new LiveChildFragment(LiveUrl.TUIJIAN));
-        data.add(new LiveChildFragment(LiveUrl.ZUIRE));
-        data.add(new LiveChildFragment(LiveUrl.ZUIXIN));
+        data.add(new GameSecondVideoFragment(GameUrl.SecondVideoZuiXin));
+        data.add(new GameSecondVideoFragment(GameUrl.SecondVideoZuiRe));
+        data.add(new GameSecondVideoFragment(GameUrl.SecondVideoRenQi));
         return data;
     }
 
     public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
-        titles.add("推荐");
-        titles.add("最热");
         titles.add("最新");
+        titles.add("最热");
+        titles.add("人气");
         return titles;
     }
+
 }
