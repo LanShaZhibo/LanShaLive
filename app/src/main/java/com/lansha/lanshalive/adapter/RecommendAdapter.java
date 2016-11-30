@@ -1,7 +1,6 @@
 package com.lansha.lanshalive.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.lansha.lanshalive.HomePage.InitGridView;
@@ -27,11 +26,9 @@ public class RecommendAdapter extends TeachBaseAdapter<ListViewModel>{
         TextView name = (TextView) holder.getView(R.id.lv_name);
         name.setText(item.getName());
         mGridView = (InitGridView) holder.itemView.findViewById(R.id.recommend_gv);
-        Log.e("oooooooooooooooooo", "BindData: " );
         adapter = new RecommendGridViewAdapter(holder.itemView.getContext(),item.getRooms());
 
         mGridView.setAdapter(adapter);
-        Log.e("mmmmmmmmmmmmmmmmm", "BindData: " );
     }
 
 }

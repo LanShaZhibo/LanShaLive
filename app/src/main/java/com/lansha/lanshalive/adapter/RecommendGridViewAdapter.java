@@ -30,9 +30,7 @@ public class RecommendGridViewAdapter extends BaseAdapter {
 
     public RecommendGridViewAdapter(Context context, List<RecommendModel> rooms) {
         inflater = LayoutInflater.from(context);
-        Log.e(TAG, "RecommendGridViewAdapter: "+rooms );
         this.data = rooms;
-        Log.e(TAG, "RecommendGridViewAdapter: "+data );
     }
 
 
@@ -45,13 +43,11 @@ public class RecommendGridViewAdapter extends BaseAdapter {
 //    }
     @Override
     public int getCount() {
-        Log.e(TAG, "getCount: "+data.size() );
         return data!=null?data.size():0;
     }
 
     @Override
     public RecommendModel getItem(int position) {
-        Log.e(TAG, "getItem: 111111111111" );
         return data.get(position);
     }
 
@@ -70,7 +66,6 @@ public class RecommendGridViewAdapter extends BaseAdapter {
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Log.e(TAG, "getView: "+ getItem(position).getName());
         holder.tv1.setText(data.get(position).getName());
         holder.tv2.setText(data.get(position).getNumber());
         holder.tv3.setText(data.get(position).getNickName());

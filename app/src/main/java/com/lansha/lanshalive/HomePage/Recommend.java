@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -183,16 +182,13 @@ public class Recommend extends Fragment {
 
     private void setupView() {
         RequestParams params = new RequestParams(HttpUrl.RECOMMEND_URL);
-        Log.e(TAG, "setupView: "+HttpUrl.RECOMMEND_URL );
         x.http().get(params, new Callback.CommonCallback<String >() {
             @Override
             public void onSuccess(String result) {
-                Log.e(TAG, "onSuccess: "+result );
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONObject object = jsonObject.getJSONObject("data");
                     JSONArray obj = object.getJSONArray("rooms2");
-                    Log.e(TAG, "onSuccess: "+obj.toString() );
                     Gson gson = new Gson();
                     Type type = new TypeToken<List<ListViewModel>>() {
                     }.getType();
