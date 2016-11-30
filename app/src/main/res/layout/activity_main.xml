@@ -5,12 +5,23 @@
     android:layout_height="match_parent"
     tools:context="com.lansha.lanshalive.MainActivity">
 
-    <LinearLayout
-        android:background="#3BA2EF"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/main_controller_height">
+        android:layout_height="@dimen/main_controller_height"
+        android:background="#6970f1">
 
-    </LinearLayout>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/title_right_image"/>
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/logo" />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/main_fragment"
