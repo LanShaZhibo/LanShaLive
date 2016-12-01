@@ -72,7 +72,7 @@
     </RadioGroup>
 
     <ImageView
-        android:id="@+id/teach_play"
+        android:id="@+id/my_play"
         android:layout_width="@dimen/main_controller_play_width"
         android:layout_height="@dimen/main_controller_play_height"
         android:layout_gravity="bottom|center_horizontal"

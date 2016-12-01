@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lansha.lanshalive">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -19,7 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameSecondActivity" />
-        <activity android:name=".VideoActivity"></activity>
+        <activity
+            android:name=".VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            />
+        </activity>
+        <activity android:name=".LiveActivity"></activity>
     </application>
 
 </manifest>

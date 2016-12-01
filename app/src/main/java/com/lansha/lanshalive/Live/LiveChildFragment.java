@@ -1,15 +1,18 @@
 package com.lansha.lanshalive.Live;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.lansha.lanshalive.BaseFragment;
+import com.lansha.lanshalive.LiveActivity;
 import com.lansha.lanshalive.Model.LiveData;
 import com.lansha.lanshalive.R;
 import com.lansha.lanshalive.adapter.LiveChildAdapter;
@@ -23,13 +26,13 @@ import org.xutils.x;
 /**
  * Created by Wind on 2016/11/28 0028.
  */
-public class LiveChildFragment extends BaseFragment {
+public class LiveChildFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     private static final String TAG = LiveChildFragment.class.getCanonicalName();
     private GridView mGridView;
     private LiveChildAdapter adapter;
     private String URL;
-    public  String GameSeconfHeaderUrl ;
+    public String GameSeconfHeaderUrl;
     private ImageView mHeader;
 
     public LiveChildFragment(String URL) {
@@ -62,13 +65,13 @@ public class LiveChildFragment extends BaseFragment {
 
                     JSONObject data = JsonObject.getJSONObject("data");
 
-                    LiveData liveData  = gson.fromJson(data.toString(), LiveData.class);
+                    LiveData liveData = gson.fromJson(data.toString(), LiveData.class);
 
                     adapter.updataRes(liveData.getRooms());
 
                     if (liveData.getBanners() != null) {
                         GameSeconfHeaderUrl = liveData.getBanners().get(0).getImg();
-                        x.image().bind(mHeader,GameSeconfHeaderUrl);
+                        x.image().bind(mHeader, GameSeconfHeaderUrl);
                     }
 
                 } catch (JSONException e) {
@@ -95,9 +98,19 @@ public class LiveChildFragment extends BaseFragment {
 
     private void initView() {
         mGridView = (GridView) layout.findViewById(R.id.game_child_gridview);
-        adapter = new LiveChildAdapter(getActivity(),null);
+        adapter = new LiveChildAdapter(getActivity(), null);
         mGridView.setAdapter(adapter);
         mHeader = (ImageView) getActivity().findViewById(R.id.game_second_header);
+        mGridView.setOnItemClickListener(this);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String liveUrl = adapter.getItem(position).getRtmp();
+        Intent intent = new Intent(getActivity().getApplicationContext(), LiveActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("liveUrl", liveUrl);
+        intent.putExtras(bundle);
+        getActivity().startActivity(intent);
+    }
 }

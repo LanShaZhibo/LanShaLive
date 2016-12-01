@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         mController = (RadioGroup) findViewById(R.id.main_controller);
         mController.setOnCheckedChangeListener(this);
 
-        mPlay = (ImageView) findViewById(R.id.teach_play);
+        mPlay = (ImageView) findViewById(R.id.my_play);
         mPlay.setOnClickListener(this);
 
         FragmentManager fm = getSupportFragmentManager();

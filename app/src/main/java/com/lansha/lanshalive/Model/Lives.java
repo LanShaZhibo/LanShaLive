@@ -10,6 +10,15 @@ public class Lives {
     private String name;
     private String nickName;
     private String number;
+    private String rtmp;
+
+    public String getRtmp() {
+        return rtmp;
+    }
+
+    public void setRtmp(String rtmp) {
+        this.rtmp = rtmp;
+    }
 
     public String getGameName() {
         return gameName;
