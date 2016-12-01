@@ -6,7 +6,14 @@ package com.lansha.lanshalive.Model;
 public class RecyclerModel {
     private String img;
     private String name;
+    private String rtmp;
 
+    public String getRtmp() {
+        return rtmp;
+    }
+    public void setRtmp(String rtmp) {
+        this.rtmp = rtmp;
+    }
     public String getImg() {
         return img;
     }

@@ -10,6 +10,15 @@ public class RecommendModel {
     private String number;
     private String name;
     private String id;
+    private String rtmp;
+
+    public String getRtmp() {
+        return rtmp;
+    }
+
+    public void setRtmp(String rtmp) {
+        this.rtmp = rtmp;
+    }
 
     public String getHeadImg() {
         return headImg;

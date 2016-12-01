@@ -1,5 +1,6 @@
 package com.lansha.lanshalive.HomePage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.lansha.lanshalive.LiveActivity;
 import com.lansha.lanshalive.MainActivity;
 import com.lansha.lanshalive.Model.ListViewModel;
 import com.lansha.lanshalive.Model.RecommendHeader;
@@ -44,7 +46,7 @@ import java.util.List;
  * Created by my on 2016/11/28.
  */
 @ContentView(R.layout.fg_hp_recommend)
-public class Recommend extends Fragment {
+public class Recommend extends Fragment implements RecommendRecyclerViewAdapter.onRecyclerItemClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     @ViewInject(R.id.recommend_lv)
     private ListView mListView;
@@ -223,17 +225,25 @@ public class Recommend extends Fragment {
         vpadapter = new RecommendHeaderAdapter(null);
         mViewPager.setAdapter(vpadapter);
 
+
         mRecy = ((RecyclerView) mheader.findViewById(R.id.recommend_header_rv));
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecy.setLayoutManager(layoutManager);
         recyclerViewAdapter = new RecommendRecyclerViewAdapter(getContext(),null);
         mRecy.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setOnRecyclerListener(this);
 
         mListView.addHeaderView(mheader);
         adapter = new RecommendAdapter(getContext(),null,R.layout.hp_recommend_item);
         mListView.setAdapter(adapter);
 
+    }
 
+    @Override
+    public void ItemClickListener(String url, View view, int position) {
+        Intent intent = new Intent(getContext(),LiveActivity.class);
+        intent.putExtra("liveUrl",url);
+        startActivity(intent);
     }
 }

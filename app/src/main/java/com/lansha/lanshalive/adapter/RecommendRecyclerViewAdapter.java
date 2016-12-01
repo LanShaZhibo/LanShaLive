@@ -21,10 +21,16 @@ import java.util.List;
  * Created by my on 2016/11/29.
  */
 public class RecommendRecyclerViewAdapter extends RecyclerView.Adapter<RecommendRecyclerViewAdapter.ViewHolder>  {
-
     private List<RecyclerModel> data;
     private LayoutInflater inflater;
-    public RecommendRecyclerViewAdapter(Context context,List<RecyclerModel>data){
+    private RecyclerView mRecyclerView;
+    private onRecyclerItemClickListener mRecyclerListener;
+
+    public void setOnRecyclerListener(onRecyclerItemClickListener mRecyclerListener) {
+        this.mRecyclerListener = mRecyclerListener;
+    }
+
+    public RecommendRecyclerViewAdapter(Context context, List<RecyclerModel>data){
         inflater = LayoutInflater.from(context);
         this.data = new ArrayList<>();
     }
@@ -36,6 +42,17 @@ public class RecommendRecyclerViewAdapter extends RecyclerView.Adapter<Recommend
         }
     }
     @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        mRecyclerView =recyclerView;
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView);
+        mRecyclerView=null;
+    }
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = null;
         itemView = inflater.inflate(R.layout.recommend_recycler_item,parent,false);
@@ -44,8 +61,21 @@ public class RecommendRecyclerViewAdapter extends RecyclerView.Adapter<Recommend
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.name.setText(data.get(position).getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int layoutPosition = holder.getLayoutPosition();
+               // mRecyclerListener.ItemClickListener(url,holder.itemView,layoutPosition);
+                if (mRecyclerView!=null) {
+                    int childAdapterPosition = mRecyclerView.getChildAdapterPosition(v);
+                    if (mRecyclerListener!=null) {
+                        mRecyclerListener.ItemClickListener(data.get(layoutPosition).getRtmp(),v,childAdapterPosition);
+                    }
+                }
+            }
+        });
         ImageOptions options = new ImageOptions.Builder()
                 .setCircular(true)
                 .build();
@@ -66,5 +96,8 @@ public class RecommendRecyclerViewAdapter extends RecyclerView.Adapter<Recommend
             name = (TextView) itemView.findViewById(R.id.recycler_name);
             image = (ImageView) itemView.findViewById(R.id.recycler_iamge);
         }
+    }
+    public interface  onRecyclerItemClickListener{
+        void ItemClickListener(String url,View view,int position);
     }
 }

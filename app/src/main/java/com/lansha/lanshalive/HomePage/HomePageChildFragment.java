@@ -1,15 +1,18 @@
 package com.lansha.lanshalive.HomePage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.lansha.lanshalive.LiveActivity;
 import com.lansha.lanshalive.Model.RecommendModel;
 import com.lansha.lanshalive.R;
 import com.lansha.lanshalive.adapter.RecommendChildAdapter;
@@ -31,7 +34,7 @@ import java.util.List;
  * Created by my on 2016/11/28.
  */
 @ContentView(R.layout.fg_hp_childfragment)
-public class HomePageChildFragment extends Fragment {
+public class HomePageChildFragment extends Fragment implements AdapterView.OnItemClickListener {
     @ViewInject(R.id.recommend_child_gv)
     private GridView mGridView;
     private String URL;
@@ -94,6 +97,14 @@ public class HomePageChildFragment extends Fragment {
     private void initView() {
         adapter = new RecommendChildAdapter(getContext(),null, R.layout.recommend_child_item);
         mGridView.setAdapter(adapter);
+        mGridView.setOnItemClickListener(this);
+    }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        RecommendModel item = adapter.getItem(position);
+        Intent intent = new Intent(parent.getContext(), LiveActivity.class);
+        intent.putExtra("liveUrl",item.getRtmp());
+        view.getContext().startActivity(intent);
     }
 }
